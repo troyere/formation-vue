@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>TV shows store - Bienvenue !</title>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css"
+        />
+        <link rel="stylesheet" href="css/app.css" />
+        <link rel="icon" type="image/png" href="img/logo.png" />
+    </head>
+    <body>
+        <div id="app">
+
+
+            <div class="container">
+                <nav class="navbar">
+                    <div class="navbar-brand">
+                        <a class="navbar-item" href="index.html">
+                            <img
+                                src="img/logo.jpg"
+                                alt="Bulma: a modern CSS framework based on Flexbox"
+                            />
+                            {{title}}
+                        </a>
+                    </div>
+                    <div class="navbar-menu">
+                        <div class="navbar-start">
+                            <a class="navbar-item is-active" href="index.html">
+                                Search
+                            </a>
+                            <a class="navbar-item" href="favorites.html">
+                                Favorite
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <section class="hero is-primary">
+                <div class="hero-body">
+                    <div class="container">
+                        <h1 class="title">{{title}}</h1>
+                        <div class="field">
+                            <label class="label">Search</label>
+                            <div class="control">
+                                <input
+                                    class="input"
+                                    type="text"
+                                    placeholder="Game of thrones, Breaking bad, ..."
+                                    @keyup.enter="searchCards($event.target.value)"
+                                    v-focus
+                                />
+                            </div>
+                        </div>
+                        <template v-for="card in cards">
+
+                            <card
+                                :title="card.title"
+                                :description="card.description"
+                                :status="card.status"
+                                :image="card.images.poster"
+                                :created-at="card.creation"
+                                :season-number="card.seasons"
+                                :genres="card.genres"
+                                :is-favorited="card.user.favorited">
+                            </card>
+
+                        </template>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <script src="js/api.js"></script>
+        <script src="js/favorites.service.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>

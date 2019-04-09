@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TV shows store</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+<body>
+<div id="app">
+    <div class="container">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="index.html">
+                    <img src="img/logo.jpg" alt="Bulma: a modern CSS framework based on Flexbox">
+                    TV shows store
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item is-active" href="index.html">
+                        Search
+                    </a>
+                    <a class="navbar-item" href="favorites.html">
+                        Favorite
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">TV shows store</h1>
+                <div class="field">
+                    <label class="label">Search</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Game of thrones, Breaking bad, ...">
+                    </div>
+                </div>
+                <div class="card card-result">
+                    <div class="card-header">
+                        <p class="card-header-title">Game of Thrones</p>
+                        <a class="card-header-icon">
+                            <span class="icon is-favorite">
+                                <i class="fa fa-star"></i>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-128x200">
+                                    <img src="https://pictures.betaseries.com/fonds/poster/121361.jpg" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="">Created in 2011 - 7 seasons</p>
+                                <p class="tags">
+                                    <span class="tag">Adventure</span>
+                                    <span class="tag">Drama</span>
+                                    <span class="tag">Fantasy</span>
+                                </p>
+                                <p class="tags"><span class="tag is-primary">Continuing</span></p>
+                                <div class="content">
+                                    Il y a très longtemps, à une époque oubliée, une force a détruit l'équilibre des
+                                    saisons. Dans un pays où l'été peut durer plusieurs années et l'hiver toute une vie,
+                                    des forces sinistres et surnaturelles se pressent aux portes du Royaume des Sept
+                                    Couronnes. La confrérie de la Garde de Nuit, protégeant le Royaume de toute créature
+                                    pouvant provenir d'au-delà du Mur protecteur, n'a plus les ressources nécessaires
+                                    pour assurer la sécurité de tous. Après un été de dix années, un hiver rigoureux
+                                    s'abat sur le Royaume avec la promesse d'un avenir des plus sombres. Pendant ce
+                                    temps, complots et rivalités se jouent sur le continent pour s'emparer du Trône de
+                                    Fer, le symbole du pouvoir absolu.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card card-result">
+                    <div class="card-header">
+                        <p class="card-header-title">Breaking Bad</p>
+                        <a class="card-header-icon">
+                            <span class="icon">
+                                <i class="fa fa-star"></i>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-128x200">
+                                    <img src="https://pictures.betaseries.com/fonds/poster/81189.jpg" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="">Created in 2008 - 5 seasons</p>
+                                <p class="tags"><span class="tag">Crime</span><span class="tag">Drama</span><span
+                                    class="tag">Suspense</span><span class="tag">Thriller</span></p>
+                                <p class="tags"><span class="tag is-warning">Ended</span></p>
+                                <div class="content">
+                                    La vie de Walter White, professeur de chimie dans un lycée, est bouleversée
+                                    lorsqu'il apprend qu'il est atteint d'un cancer en phase terminale. Une nouvelle qui
+                                    le sort de la torpeur de son quotidien et l'amène à prendre des mesures radicales
+                                    pour anticiper l'avenir de sa famille.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="js/api.js"></script>
+<script src="js/favorites.service.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

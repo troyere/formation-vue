@@ -1,0 +1,16 @@
+{
+  "name": "temps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4",
+    "vue": "^2.4.2",
+    "vue-server-renderer": "^2.4.2"
+  }
+}

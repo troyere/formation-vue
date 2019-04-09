@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TV shows store</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+<body>
+<div id="app">
+    <div class="container">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <router-link class="navbar-item" :to="{name: 'home'}">
+                    <img src="img/logo.jpg" alt="Bulma: a modern CSS framework based on Flexbox">
+                    TV shows store
+                </router-link>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <router-link :to="{name: 'shows'}" class="navbar-item" active-class="is-active">
+                        Search
+                    </router-link>
+                    <router-link :to="{name: 'favorites'}" class="navbar-item" active-class="is-active">
+                        Favorite
+                    </router-link>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <router-view></router-view>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="js/api.js"></script>
+<script src="js/favorites.service.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

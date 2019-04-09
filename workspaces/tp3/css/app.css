@@ -1,0 +1,16 @@
+.navbar-item.is-active {
+    color: #00D1B2 !important;
+}
+
+.card-result {
+    margin-bottom: 20px;
+}
+ 
+.is-128x200 {
+    height: 200px;
+    width: 128px;
+}
+
+.is-favorite {
+    color: #FFDD57;
+}
