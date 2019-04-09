@@ -1,10 +1,10 @@
-console.log(Vue.version);
-
 Vue.directive('focus', {
     inserted: function (el) {
         el.focus()
     }
 })
+
+
 
 Vue.component('truncatedText', {
     props: ['text', 'maxLength'],
