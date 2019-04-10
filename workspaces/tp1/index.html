@@ -18,68 +18,44 @@
     </head>
     <body>
         <div id="app">
-
-
             <div class="container">
                 <nav class="navbar">
                     <div class="navbar-brand">
-                        <a class="navbar-item" href="index.html">
+                        <router-link :to="{name: 'home'}" class="navbar-item">
                             <img
                                 src="img/logo.jpg"
                                 alt="Bulma: a modern CSS framework based on Flexbox"
                             />
                             {{title}}
-                        </a>
+                        </router-link>
                     </div>
                     <div class="navbar-menu">
                         <div class="navbar-start">
-                            <a class="navbar-item is-active" href="index.html">
+                            <router-link :to="{name: 'shows'}" class="navbar-item" exact-active-class="is-active">
                                 Search
-                            </a>
-                            <a class="navbar-item" href="favorites.html">
+                            </router-link>
+                            <router-link :to="{name: 'favorites'}" class="navbar-item" exact-active-class="is-active">
                                 Favorite
-                            </a>
+                            </router-link>
                         </div>
                     </div>
                 </nav>
             </div>
-            <section class="hero is-primary">
-                <div class="hero-body">
-                    <div class="container">
-                        <h1 class="title">{{title}}</h1>
-                        <div class="field">
-                            <label class="label">Search</label>
-                            <div class="control">
-                                <input
-                                    class="input"
-                                    type="text"
-                                    placeholder="Game of thrones, Breaking bad, ..."
-                                    @keyup.enter="searchCards($event.target.value)"
-                                    v-focus
-                                />
-                            </div>
-                        </div>
-                        <template v-for="card in cards">
-
-                            <card
-                                :title="card.title"
-                                :description="card.description"
-                                :status="card.status"
-                                :image="card.images.poster"
-                                :created-at="card.creation"
-                                :season-number="card.seasons"
-                                :genres="card.genres"
-                                :is-favorited="card.user.favorited">
-                            </card>
-
-                        </template>
-                    </div>
-                </div>
-            </section>
+            <router-view></router-view>
         </div>
         <script src="js/api.js"></script>
         <script src="js/favorites.service.js"></script>
+
+        <script src="https://unpkg.com/axios@0.18.0/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script src="https://unpkg.com/vue-router@3.0.3/dist/vue-router.js"></script>
+
+        <script src="js/directives/focus.js"></script>
+        <script src="js/components/truncated-text.js"></script>
+        <script src="js/components/show-card.js"></script>
+        <script src="js/components/show-page.js"></script>
+        <script src="js/components/shows-page.js"></script>
+
         <script src="js/app.js"></script>
     </body>
 </html>

@@ -63,7 +63,7 @@ const mockData = {
         "show": "https:\/\/pictures.betaseries.com\/fonds\/show\/1161_1212974.jpg",
         "banner": "https:\/\/pictures.betaseries.com\/fonds\/banner\/1161_1502049726.jpg",
         "box": "https:\/\/pictures.betaseries.com\/fonds\/box\/1161_1502049726.jpg",
-        "poster": "https:\/\/pictures.betaseries.com\/fonds\/poster\/121361.jpg"
+        "poster": "https://imgc.allpostersimages.com/img/print/u-g-F4RTW50.jpg?w=300&h=450"
       },
       "aliases": [
         "Game of Thrones",
@@ -148,7 +148,7 @@ const mockData = {
         "show": "https:\/\/pictures.betaseries.com\/fonds\/show\/1275_932040.jpg",
         "banner": "https:\/\/pictures.betaseries.com\/fonds\/banner\/1275_1362953209.jpg",
         "box": "https:\/\/pictures.betaseries.com\/fonds\/box\/1275_1362953209.jpg",
-        "poster": "https:\/\/pictures.betaseries.com\/fonds\/poster\/153021.jpg"
+        "poster": "https://imgc.allpostersimages.com/img/print/u-g-F54Q2J0.jpg?w=291&h=450"
       },
       "aliases": [
         "The Walking Dead"
@@ -666,7 +666,7 @@ const mockData = {
         "show": "https:\/\/pictures.betaseries.com\/fonds\/show\/5010_975621.jpg",
         "banner": "https:\/\/pictures.betaseries.com\/fonds\/banner\/5010_1362236149.jpg",
         "box": "https:\/\/pictures.betaseries.com\/fonds\/box\/5010_1362236149.jpg",
-        "poster": "https:\/\/pictures.betaseries.com\/fonds\/poster\/257655.jpg"
+        "poster": "https://images-na.ssl-images-amazon.com/images/I/51X8kWnChYL._SY450_.jpg"
       },
       "aliases": [
         "Arrow"
@@ -757,7 +757,7 @@ const mockData = {
       ],
       "user": {
         "archived": false,
-        "favorited": false,
+        "favorited": true,
         "remaining": 0,
         "status": 0,
         "last": "S00E00",
@@ -829,7 +829,7 @@ const mockData = {
         "show": "https:\/\/pictures.betaseries.com\/fonds\/show\/1318_1148028.jpg",
         "banner": "https:\/\/pictures.betaseries.com\/fonds\/banner\/1318_1368214424.jpg",
         "box": "https:\/\/pictures.betaseries.com\/fonds\/box\/1318_1368214424.jpg",
-        "poster": "https:\/\/pictures.betaseries.com\/fonds\/poster\/146711.jpg"
+        "poster": "https://images-na.ssl-images-amazon.com/images/I/71dmdk7h2rL._SY606_.jpg"
       },
       "aliases": [
         "Les Menteuses",
@@ -983,7 +983,7 @@ const mockData = {
         "show": "https:\/\/pictures.betaseries.com\/fonds\/show\/6001_1043866.jpg",
         "banner": "https:\/\/pictures.betaseries.com\/fonds\/banner\/6001_1373945940.jpg",
         "box": "https:\/\/pictures.betaseries.com\/fonds\/box\/6001_1373945940.jpg",
-        "poster": "https:\/\/pictures.betaseries.com\/fonds\/poster\/264586.jpg"
+        "poster": "https://cdn.shopify.com/s/files/1/0969/9128/products/Poster_-_Orange_Is_The_New_Black_-_Graphic_Art_-_TV_Show_Collection_14f9b7fd-be2b-4805-bbce-928360cc39db.jpg?v=1537864279"
       },
       "aliases": [
         "Orange Is The New Black",
@@ -1007,7 +1007,13 @@ const API = {
     if (!query) {
       return Promise.resolve(mockData.shows)
     }
-    return Promise.resolve(mockData.shows.filter(it => it.title.match(query)))
+
+    return Promise.resolve(mockData.shows.filter((it) => {
+      const matchFavorited = query.favoritedOnly ? true === it.user.favorited : true
+      const matchTitle = query.title ? it.title.match(query.title) : true
+
+      return matchFavorited && matchTitle;
+    }))
   }
 };
 
