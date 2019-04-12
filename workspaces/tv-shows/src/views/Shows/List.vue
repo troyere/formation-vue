@@ -20,14 +20,14 @@
     <template v-else>
       <template v-if="shows.length > 0">
         <template v-for="show in shows">
-          <show-card
+          <card
             :key="show.id"
             :show="show"
             :short-description="true"
             :details-link-enabled="true"
             :favorited-link-enabled="!favoritesOnly"
           >
-          </show-card>
+          </card>
         </template>
       </template>
       <p v-else>
@@ -38,55 +38,49 @@
 </template>
 
 <script>
-import ShowRepository from "../repository/ShowRepository";
-import AutoFocus from "../directives/AutoFocus.vue";
+import Card from "../../components/Shows/Card";
+import AutoFocus from "../../directives/AutoFocus.vue";
 
 export default {
   name: "showsList",
   props: {
     favoritesOnly: Boolean
   },
+  components: {
+    Card
+  },
   directives: {
     AutoFocus
   },
   data() {
     return {
-      searchInputValue: null,
-      searchTitle: null,
-      shows: [],
-      isLoading: false
+      searchInputValue: "",
+      searchTitle: ""
     };
   },
   watch: {
     favoritesOnly() {
-      this.findShows();
+      this.searchInputValue = "";
+      this.searchTitle = "";
     }
   },
   mounted() {
-    this.findShows();
+    this.$store.dispatch("shows/list/fetch");
+  },
+  computed: {
+    isLoading() {
+      return this.$store.getters["shows/list/isLoading"];
+    },
+    shows() {
+      return this.$store.getters["shows/list/filtered"](
+        this.favoritesOnly,
+        this.searchTitle
+      );
+    }
   },
   methods: {
-    async findShows() {
-      this.isLoading = true;
-      try {
-        const response = await ShowRepository.findAll();
-        this.shows = response.data
-          .filter(show => {
-            return this.favoritesOnly ? true === show.isFavorites : true;
-          })
-          .filter(show => {
-            return this.searchTitle ? show.title.match(this.searchTitle) : true;
-          });
-      } catch (e) {
-        this.shows = [];
-      } finally {
-        this.isLoading = false;
-      }
-    },
     search() {
       this.searchTitle = this.searchInputValue;
-
-      this.findShows();
     }
   }
 };

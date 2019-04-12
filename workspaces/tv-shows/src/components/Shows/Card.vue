@@ -7,9 +7,9 @@
       <a
         v-if="favoritedLinkEnabled"
         class="card-header-icon"
-        @click="toggleIsFavorited()"
+        @click="toggleIsFavorites()"
       >
-        <span class="icon" :class="{ 'is-favorite': internalIsFavorites }">
+        <span class="icon" :class="{ 'is-favorite': isFavorites }">
           <i class="fa fa-star"></i>
         </span>
       </a>
@@ -32,7 +32,7 @@
         </div>
         <div class="media-content">
           <p>
-            <small>{{ textIsFavorited }}</small>
+            <small>{{ textIsFavorites }}</small>
           </p>
           <p>{{ show.creation }} - {{ show.seasons }} seasons</p>
           <p class="tags">
@@ -61,8 +61,7 @@
 </template>
 
 <script>
-import ShowRepository from "../repository/ShowRepository";
-import TruncatedText from "../components/TruncatedText";
+import TruncatedText from "../TruncatedText";
 
 export default {
   name: "showCard",
@@ -75,28 +74,25 @@ export default {
   components: {
     TruncatedText
   },
-  data() {
-    return {
-      internalIsFavorites: this.show.isFavorites
-    };
-  },
   computed: {
+    isFavorites() {
+      return this.$store.getters["shows/favorites/exists"](this.show.id);
+    },
     descriptionMaxLength() {
       return this.shortDescription ? 100 : -1;
     },
-    textIsFavorited() {
-      return this.internalIsFavorites
+    textIsFavorites() {
+      return this.isFavorites
         ? `${this.show.title} is favorited !`
         : `${this.show.title} is not favorited !`;
     }
   },
   methods: {
-    async toggleIsFavorited() {
-      try {
-        await ShowRepository.updateIsFavorites(!this.internalIsFavorites);
-        this.internalIsFavorites = !this.internalIsFavorites;
-      } catch (e) {
-        // Il faut gérer l'erreur !
+    toggleIsFavorites() {
+      if (this.isFavorites) {
+        this.$store.dispatch("shows/favorites/remove", this.show.id);
+      } else {
+        this.$store.dispatch("shows/favorites/add", this.show.id);
       }
     },
     isEnded() {

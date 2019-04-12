@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home";
-import ShowsList from "./views/ShowsList";
-import ShowDetails from "./views/ShowDetails";
+import List from "./views/Shows/List";
+import Details from "./views/Shows/Details";
 
 Vue.use(Router);
 
@@ -18,13 +18,13 @@ export default new Router({
     {
       name: "shows",
       path: "/shows",
-      component: ShowsList
+      component: List
     },
     {
       name: "favorites",
       path: "/shows/favorites",
       alias: ["/starred", "/top"],
-      component: ShowsList,
+      component: List,
       props: {
         favoritesOnly: true
       }
@@ -32,7 +32,7 @@ export default new Router({
     {
       name: "show",
       path: "/shows/:id",
-      component: ShowDetails,
+      component: Details,
       props: true
     }
   ]
