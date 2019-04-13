@@ -23,7 +23,8 @@ export default {
     }
   },
   actions: {
-    async fetch({ commit }, id) {
+    async fetch({ commit, rootState }, id) {
+      console.log("bouuuh", rootState);
       commit("isLoading", true);
       try {
         const response = await client.get(`shows/${id}`);
@@ -34,6 +35,19 @@ export default {
         commit("isLoading", false);
       }
     }
+    /*,
+    async fetchFromList({ commit, rootState }, id) {
+      commit("isLoading", true);
+      try {
+
+
+        commit("setShow", response.data);
+      } catch (e) {
+        commit("setLastError", e);
+      } finally {
+        commit("isLoading", false);
+      }
+    }*/
   },
   getters: {
     isLoading: state => {

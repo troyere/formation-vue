@@ -1,29 +1,29 @@
 export default {
   namespaced: true,
   state: {
-    list: []
+    favorites: []
   },
   mutations: {
-    addId(state, id) {
-      state.list.push(id);
+    add(state, id) {
+      state.favorites.push(id);
     },
-    removeId(state, id) {
-      state.list = state.list.filter(function(value) {
+    remove(state, id) {
+      state.favorites = state.favorites.filter(function(value) {
         return value !== id;
       });
     }
   },
   actions: {
     add({ commit }, id) {
-      commit("addId", id);
+      commit("add", id);
     },
     remove({ commit }, id) {
-      commit("removeId", id);
+      commit("remove", id);
     }
   },
   getters: {
     exists: state => id => {
-      return state.list.filter(value => value === id).length > 0;
+      return state.favorites.filter(value => value === id).length > 0;
     }
   }
 };

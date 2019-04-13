@@ -39,6 +39,9 @@ export default {
     isLoading: state => {
       return state.isLoading;
     },
+    get: state => {
+      return state.list;
+    },
     filtered: state => (favoritesOnly, title) => {
       return state.list
         .filter(show => {
