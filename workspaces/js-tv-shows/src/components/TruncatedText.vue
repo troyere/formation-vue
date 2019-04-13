@@ -1,9 +1,6 @@
 <template>
   <span>
-    <template v-if="enabled">
-      <span v-if="!showAll" @click="toggle()">{{ truncated }}</span>
-      <span v-if="showAll" @click="toggle()">{{ text }}</span>
-    </template>
+    <span v-if="enabled" @click="toggle()">{{ truncated }}</span>
     <template v-else>{{ text }}</template>
   </span>
 </template>
@@ -23,7 +20,7 @@ export default {
   },
   computed: {
     truncated() {
-      if (this.maxLength && this.text.length > this.maxLength) {
+      if (this.enabled && this.text.length > this.maxLength) {
         return (
           this.text.substring(0, this.maxLength - this.ending.length) +
           this.ending
