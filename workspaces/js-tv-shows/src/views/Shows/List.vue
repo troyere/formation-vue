@@ -1,19 +1,12 @@
 <template>
   <div class="shows-list">
     <h1 class="title">Shows</h1>
-    <div class="field">
-      <label class="label">Search</label>
-      <div class="control">
-        <input
-          class="input"
-          type="text"
-          placeholder="Game of thrones, Breaking bad, ..."
-          @keyup.enter="search()"
-          v-model="searchInputValue"
-          v-auto-focus
-        />
-      </div>
-    </div>
+    <search 
+      v-on:search="onSearch" 
+      :term="searchTerm"
+      :placeholder="searchPlaceholder"
+    >
+    </search>
     <p v-if="isLoading">
       <i>Chargement en cours...</i>
     </p>
@@ -39,7 +32,7 @@
 
 <script>
 import Card from "../../components/Shows/Card";
-import AutoFocus from "../../directives/AutoFocus.vue";
+import Search from "../../components/Search";
 
 export default {
   name: "showsList",
@@ -47,21 +40,18 @@ export default {
     favoritesOnly: Boolean
   },
   components: {
+    Search,
     Card
-  },
-  directives: {
-    AutoFocus
   },
   data() {
     return {
-      searchInputValue: "",
-      searchTitle: ""
+      searchPlaceholder: "Game of thrones, Breaking bad, ...",
+      searchTerm: ""
     };
   },
   watch: {
     favoritesOnly() {
-      this.searchInputValue = "";
-      this.searchTitle = "";
+      this.searchTerm = "";
     }
   },
   mounted() {
@@ -72,15 +62,18 @@ export default {
       return this.$store.getters["shows/list/isLoading"];
     },
     shows() {
-      return this.$store.getters["shows/list/filtered"](
-        this.favoritesOnly,
-        this.searchTitle
-      );
+      return this.$store.getters["shows/list/get"]
+        .filter(show => {
+          return this.searchTerm ? show.title.match(this.searchTerm) : true;
+        })
+        .filter(show => {
+          return this.favoritesOnly ? this.$store.getters["shows/favorites/exists"](show.id) : true;
+        });
     }
   },
   methods: {
-    search() {
-      this.searchTitle = this.searchInputValue;
+    onSearch(inputValue) {
+      this.searchTerm = inputValue;
     }
   }
 };

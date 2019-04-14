@@ -34,7 +34,9 @@
     <section class="hero is-primary">
       <div class="hero-body">
         <div class="container">
-          <router-view></router-view>
+          <keep-alive>
+            <router-view></router-view>
+          </keep-alive>
         </div>
       </div>
     </section>

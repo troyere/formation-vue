@@ -49,10 +49,9 @@
             </span>
           </p>
           <div class="content">
-            <truncated-text
-              :text="show.description"
-              :max-length="descriptionMaxLength"
-            ></truncated-text>
+            <truncated :max-length="descriptionMaxLength">
+              {{show.description}}
+            </truncated>
           </div>
         </div>
       </div>
@@ -61,7 +60,7 @@
 </template>
 
 <script>
-import TruncatedText from "../TruncatedText";
+import Truncated from "../Truncated";
 
 export default {
   name: "showCard",
@@ -72,7 +71,7 @@ export default {
     "favoritedLinkEnabled"
   ],
   components: {
-    TruncatedText
+    Truncated
   },
   computed: {
     isFavorites() {

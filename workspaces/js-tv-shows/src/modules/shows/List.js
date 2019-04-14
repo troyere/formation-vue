@@ -30,6 +30,7 @@ export default {
         commit("setList", response.data);
       } catch (e) {
         commit("setLastError", e);
+        throw e;
       } finally {
         commit("isLoading", false);
       }
@@ -42,14 +43,9 @@ export default {
     get: state => {
       return state.list;
     },
-    filtered: state => (favoritesOnly, title) => {
-      return state.list
-        .filter(show => {
-          return favoritesOnly ? true === show.isFavorites : true;
-        })
-        .filter(show => {
-          return title ? show.title.match(title) : true;
-        });
+    one: state => id => {
+      const filtered = state.list.filter(show => show.id === id);
+      return 1 === filtered.length ? filtered[0] : null;
     }
   }
 };
