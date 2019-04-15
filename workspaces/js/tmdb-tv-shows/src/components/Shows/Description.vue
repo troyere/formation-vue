@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <template v-if="text">
-      {{ text|truncated(maxLength) }}
+      {{ text | truncated(maxLength) }}
     </template>
     <template v-else>
       <i>{{ fallback }}</i>

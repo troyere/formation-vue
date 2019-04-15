@@ -23,17 +23,15 @@ export default {
       return !!this.path;
     },
     classes() {
-      return this.available 
-        ? `is-185x278` 
-        : `is-185x278 no-image-holder`;
+      return this.available ? "" : "no-image-holder";
     },
     src() {
       return this.url("w185_and_h278_bestv2");
-    },
+    }
   },
   methods: {
     url(size) {
-      return `https://image.tmdb.org/t/p/${size}${this.path}`;
+      return `http://image.tmdb.org/t/p/${size}${this.path}`;
     }
   }
 };
