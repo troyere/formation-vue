@@ -1,0 +1,37 @@
+.navbar-item.is-active {
+  color: #00D1B2 !important;
+}
+
+.is-h278 {
+  height: 278px;
+}
+
+.is-185x278 {
+  width: 185px;
+  height: 278px;
+}
+
+.no-image-holder {
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #dbdbdb;
+  color: #b5b5b5;
+}
+
+.no-image-holder.is-185x278 > .fa {
+  line-height: 278px;
+}
+
+.media-content {
+  position: relative;
+}
+
+.card-footer {
+  width: 100%;
+  padding: 1rem 1.5rem;
+}
+
+.is-favorite {
+  color: #FFDD57;
+}
