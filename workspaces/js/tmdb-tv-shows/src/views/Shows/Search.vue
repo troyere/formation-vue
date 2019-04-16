@@ -16,13 +16,16 @@
           <template v-if="shows.length > 0">
             <div class="columns is-mobile is-multiline">
               <template v-for="show in shows">
-                <div class="column is-full-mobile is-full-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd" :key="show.id">
-                  <card
-                    :show="show"
-                    :short-description="true"
-                    :details-link-enabled="true"
-                    :favorited-link-enabled="!favoritesOnly"
-                  />
+                <div class="column" :class="columnSizes" :key="show.id">
+                  <div class="column-fill-card">
+                    <card
+                      :show="show"
+                      :short-description="true"
+                      :single-line="!!searchTerm"
+                      :details-link-enabled="true"
+                      :favorited-link-enabled="!favoritesOnly"
+                    />
+                  </div>
                 </div>
               </template>
             </div>
@@ -64,7 +67,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch("shows/list/fetch");
+    this.$store.dispatch("shows/list/fetchTopRated");
   },
   computed: {
     isLoading() {
@@ -72,19 +75,30 @@ export default {
     },
     shows() {
       return this.$store.getters["shows/list/get"];
-        /*.filter(show => {
-          return this.searchTerm ? show.title.match(this.searchTerm) : true;
-        })
+        /*
         .filter(show => {
           return this.favoritesOnly
             ? this.$store.getters["shows/favorites/exists"](show.id)
             : true;
-        });*/
+        });
+        */
+    },
+    columnSizes() {
+      if (this.searchTerm) {
+        return "is-full";
+      } else {
+        return "is-full-mobile is-full-tablet is-half-desktop is-half-widescreen is-one-third-fullhd";
+      }
     }
   },
   methods: {
     onSearch(inputValue) {
       this.searchTerm = inputValue;
+      if (this.searchTerm) {
+        this.$store.dispatch("shows/list/fetchQuery", this.searchTerm);
+      } else {
+        this.$store.dispatch("shows/list/fetchTopRated");
+      }
     }
   }
 };

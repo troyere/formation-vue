@@ -1,36 +1,44 @@
 <template>
-  <div class="card-result">
-    <div class="card">
-      <div class="columns is-mobile is-gapless is-multiline">
-        <div class="column is-full-mobile">
-          <poster :path="show.poster_path" />
-        </div>
-        <div class="column ">
-          <div class="card-content">
+  <div class="card">
+    <div class="columns is-mobile is-gapless is-multiline">
+      <div class="column" :class="posterSizes">
+        <poster :path="show.poster_path" />
+      </div>
+      <div class="column">
+        <div class="column-fill-card-content">
+          <div class="card-title">
             <p class="title is-6">
               {{ show.name }}
             </p>
             <p class="subtitle is-6">
               {{ show.first_air_date | niceDate }}
             </p>
-            <!--<a @click="toggleIsFavorites()">
+          </div>
+          <div class="card-content">
+            <description :short="true">
+              {{ show.overview }}
+            </description>
+          </div>
+          <div class="card-footer">
+            <a class="card-footer-item" @click="toggleIsFavorites()">
               <span class="icon" :class="{ 'is-favorite': isFavorites }">
                 <i class="fa fa-star"></i>
               </span>
             </a>
-            <description :text="show.overview" :short="shortDescription" />
-            <div v-if="detailsLinkEnabled">
-              <router-link
-                :to="{ name: 'show', params: { id: show.id } }"
-                class="has-text-grey-light"
-              >
-                Plus d'informations
-              </router-link>
-            </div>-->
+            <router-link
+              class="card-footer-item"
+              v-if="detailsLinkEnabled" 
+              :to="{ name: 'show', params: { id: show.id } }"
+            >
+              <span class="icon">
+                <i class="fa fa-arrow-right"></i>
+              </span>
+            </router-link>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -43,6 +51,7 @@ export default {
   name: "showCard",
   props: [
     "show",
+    "singleLine",
     "shortDescription",
     "detailsLinkEnabled",
     "favoritedLinkEnabled"
@@ -62,6 +71,13 @@ export default {
       return this.isFavorites
         ? `${this.show.title} is favorited !`
         : `${this.show.title} is not favorited !`;
+    },
+    posterSizes() {
+      if (this.singleLine) {
+        return "is-full-mobile is-two-fifths-tablet is-one-fifth-desktop is-one-fifth-widescreen is-one-fifth-fullhd";
+      } else {
+        return "is-full-mobile is-two-fifths-tablet is-two-fifths-desktop is-half-widescreen is-half-fullhd";
+      }
     }
   },
   methods: {

@@ -19,12 +19,24 @@ export default {
     }
   },
   actions: {
-    async fetch({ commit }) {
+    async fetchTopRated({ commit }) {
+      commit("isLoading", true);
+      try {
+        const response = await Api.get("/tv/top_rated");
+        commit("setList", response.data.results);
+      } catch (e) {
+        commit("setLastError", e);
+        throw e;
+      } finally {
+        commit("isLoading", false);
+      }
+    },
+    async fetchQuery({ commit }, query) {
       commit("isLoading", true);
       try {
         const response = await Api.get("search/tv", {
           params: {
-            query: "game"
+            query: query
           }
         });
         commit("setList", response.data.results);

@@ -1,10 +1,10 @@
 <template>
-  <div class="content">
+  <div class="description">
     <template v-if="text">
       {{ text | truncated(maxLength) }}
     </template>
     <template v-else>
-      <i>{{ fallback | truncated(maxLength) }}</i>
+      <i>{{ fallback }}</i>
     </template>
   </div>
 </template>
@@ -14,11 +14,10 @@ import Truncated from "../../filters/Truncated";
 
 export default {
   name: "showDescription",
+  filters: {
+    Truncated
+  },
   props: {
-    text: {
-      type: String,
-      required: true
-    },
     short: {
       type: Boolean,
       default: false
@@ -26,15 +25,16 @@ export default {
   },
   data() {
     return {
+      text: "",
       fallback: "Nous ne disposons d'aucun résumé traduit en français."
     };
   },
-  filters: {
-    Truncated
+  mounted() {
+    this.text = this.$slots.default[0].text.trim();
   },
   computed: {
     maxLength() {
-      return this.short ? 20 : -1;
+      return this.short ? 170 : -1;
     }
   }
 };

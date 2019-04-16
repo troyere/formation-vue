@@ -1,8 +1,12 @@
 export default (str, maxLength) => {
-  const ending = "...";
   const enabled = maxLength && -1 !== maxLength;
   if (enabled && str.length > maxLength) {
-    return str.substring(0, maxLength - ending.length) + ending;
+    const ending = "...";
+    const rough = str.substring(0, maxLength);
+    return (
+      rough.substring(0, Math.min(rough.length, rough.lastIndexOf(" "))) +
+      ending
+    );
   } else {
     return str;
   }
