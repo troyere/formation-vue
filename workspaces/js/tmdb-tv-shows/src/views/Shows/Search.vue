@@ -1,18 +1,12 @@
 <template>
-  <div class="shows-list">
-    <section class="hero is-primary">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">Shows</h1>
-          <search
-            v-on:search="onSearch"
-            :term="searchTerm"
-            :placeholder="searchPlaceholder"
-          >
-          </search>
-        </div>
-      </div>
-    </section>
+  <div class="page">
+    <banner :title="title">
+      <search
+        v-on:search="onSearch"
+        :term="searchTerm"
+        :placeholder="searchPlaceholder"
+      />
+    </banner>
     <section class="section">
       <div class="container">
         <p v-if="isLoading">
@@ -28,8 +22,7 @@
                     :short-description="true"
                     :details-link-enabled="true"
                     :favorited-link-enabled="!favoritesOnly"
-                  >
-                  </card>
+                  />
                 </div>
               </template>
             </div>
@@ -44,6 +37,7 @@
 </template>
 
 <script>
+import Banner from "../../components/Layout/Banner";
 import Card from "../../components/Shows/Card";
 import Search from "../../components/Search";
 
@@ -53,11 +47,13 @@ export default {
     favoritesOnly: Boolean
   },
   components: {
+    Banner,
     Search,
     Card
   },
   data() {
     return {
+      title: "Shows",
       searchPlaceholder: "Game of thrones, Breaking bad, ...",
       searchTerm: ""
     };
