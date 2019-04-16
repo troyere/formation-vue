@@ -1,35 +1,7 @@
 <template>
   <div id="app">
     <div class="container">
-      <nav class="navbar">
-        <div class="navbar-brand">
-          <router-link :to="{ name: 'home' }" class="navbar-item">
-            <img
-              src="./assets/img/logo.jpg"
-              alt="Bulma: a modern CSS framework based on Flexbox"
-            />
-            {{ title }}
-          </router-link>
-        </div>
-        <div class="navbar-menu">
-          <div class="navbar-start">
-            <router-link
-              :to="{ name: 'shows' }"
-              class="navbar-item"
-              exact-active-class="is-active"
-            >
-              Search
-            </router-link>
-            <router-link
-              :to="{ name: 'favorites' }"
-              class="navbar-item"
-              exact-active-class="is-active"
-            >
-              Favorite
-            </router-link>
-          </div>
-        </div>
-      </nav>
+      <nav-bar />
     </div>
     <keep-alive>
       <router-view></router-view>
@@ -38,11 +10,11 @@
 </template>
 
 <script>
+import NavBar from "./components/Layout/NavBar";
+
 export default {
-  data() {
-    return {
-      title: "TV shows store - Ho yeah !"
-    };
+  components: {
+    NavBar
   }
 };
 </script>

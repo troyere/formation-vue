@@ -1,6 +1,5 @@
 <template>
   <div class="field">
-    <label class="label">Search</label>
     <div class="control">
       <input
         class="input"
@@ -15,7 +14,7 @@
 </template>
 
 <script>
-import AutoFocus from "../directives/AutoFocus";
+import AutoFocus from "../../directives/AutoFocus";
 
 export default {
   name: "search",

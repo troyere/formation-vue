@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home";
-import List from "./views/Shows/List";
+import Search from "./views/Shows/Search";
 import Details from "./views/Shows/Details";
 
 Vue.use(Router);
@@ -18,13 +18,13 @@ export default new Router({
     {
       name: "shows",
       path: "/shows",
-      component: List
+      component: Search
     },
     {
       name: "favorites",
       path: "/shows/favorites",
       alias: ["/starred", "/top"],
-      component: List,
+      component: Search,
       props: {
         favoritesOnly: true
       }

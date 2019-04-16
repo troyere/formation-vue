@@ -1,14 +1,21 @@
 <template>
-  <div class="home">
-    <h1 class="title">
-      Bienvenue !
-    </h1>
-    <!--<img alt="Vue logo" src="../assets/logo.png" />-->
+  <div class="page">
+    <banner :title="title" />
   </div>
 </template>
 
 <script>
+import Banner from "../components/Layout/Banner";
+
 export default {
-  name: "home"
+  name: "home",
+  components: {
+    Banner
+  },
+  data() {
+    return {
+      title: "Bienvenue !"
+    };
+  }
 };
 </script>

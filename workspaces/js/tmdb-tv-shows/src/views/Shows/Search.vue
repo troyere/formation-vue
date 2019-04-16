@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <banner :title="title">
-      <search
+      <search-bar
         v-on:search="onSearch"
         :term="searchTerm"
         :placeholder="searchPlaceholder"
@@ -39,7 +39,7 @@
 <script>
 import Banner from "../../components/Layout/Banner";
 import Card from "../../components/Shows/Card";
-import Search from "../../components/Search";
+import SearchBar from "../../components/Layout/SearchBar";
 
 export default {
   name: "showsList",
@@ -48,12 +48,12 @@ export default {
   },
   components: {
     Banner,
-    Search,
+    SearchBar,
     Card
   },
   data() {
     return {
-      title: "Shows",
+      title: "Recherche",
       searchPlaceholder: "Game of thrones, Breaking bad, ...",
       searchTerm: ""
     };
