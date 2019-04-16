@@ -14,9 +14,9 @@
         </p>
         <template v-else>
           <template v-if="shows.length > 0">
-            <div class="columns is-multiline">
+            <div class="columns is-mobile is-multiline">
               <template v-for="show in shows">
-                <div class="column is-half" :key="show.id">
+                <div class="column is-full-mobile is-full-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd" :key="show.id">
                   <card
                     :show="show"
                     :short-description="true"

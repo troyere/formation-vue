@@ -4,7 +4,7 @@
       {{ text | truncated(maxLength) }}
     </template>
     <template v-else>
-      <i>{{ fallback }}</i>
+      <i>{{ fallback | truncated(maxLength) }}</i>
     </template>
   </div>
 </template>
@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     maxLength() {
-      return this.short ? 70 : -1;
+      return this.short ? 20 : -1;
     }
   }
 };

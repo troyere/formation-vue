@@ -1,11 +1,11 @@
 <template>
   <div class="card-result">
     <div class="card">
-      <div class="columns is-gapless">
-        <div class="column">
+      <div class="columns is-mobile is-gapless is-multiline">
+        <div class="column is-full-mobile">
           <poster :path="show.poster_path" />
         </div>
-        <div class="column is-two-thirds">
+        <div class="column ">
           <div class="card-content">
             <p class="title is-6">
               {{ show.name }}
@@ -13,7 +13,7 @@
             <p class="subtitle is-6">
               {{ show.first_air_date | niceDate }}
             </p>
-            <a @click="toggleIsFavorites()">
+            <!--<a @click="toggleIsFavorites()">
               <span class="icon" :class="{ 'is-favorite': isFavorites }">
                 <i class="fa fa-star"></i>
               </span>
@@ -26,7 +26,7 @@
               >
                 Plus d'informations
               </router-link>
-            </div>
+            </div>-->
           </div>
         </div>
       </div>

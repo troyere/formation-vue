@@ -1,10 +1,12 @@
 <template>
-  <figure class="image" :class="classes">
+  <figure class="image">
     <template v-if="available">
       <img :src="src" alt="Image" />
     </template>
     <template v-else>
-      <span class="fa fa-image fa-5x"></span>
+      <div class="no-image-holder">
+        <span class="fa fa-image fa-5x"></span>
+      </div>
     </template>
   </figure>
 </template>
@@ -21,9 +23,6 @@ export default {
   computed: {
     available() {
       return !!this.path;
-    },
-    classes() {
-      return this.available ? "" : "no-image-holder";
     },
     src() {
       return this.url("w185_and_h278_bestv2");
