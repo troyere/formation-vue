@@ -3,7 +3,7 @@
     <div class="card">
       <div class="columns is-gapless">
         <div class="column">
-          <poster :path="show.poster_path"></poster>
+          <poster :path="show.poster_path" />
         </div>
         <div class="column is-two-thirds">
           <div class="card-content">
@@ -18,8 +18,7 @@
                 <i class="fa fa-star"></i>
               </span>
             </a>
-            <description :text="show.overview" :short="shortDescription">
-            </description>
+            <description :text="show.overview" :short="shortDescription" />
             <div v-if="detailsLinkEnabled">
               <router-link
                 :to="{ name: 'show', params: { id: show.id } }"
