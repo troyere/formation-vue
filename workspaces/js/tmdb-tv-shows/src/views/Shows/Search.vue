@@ -17,7 +17,7 @@
             <div class="columns is-mobile is-multiline">
               <template v-for="show in shows">
                 <div class="column" :class="columnSizes" :key="show.id">
-                  <div class="column-fill-card">
+
                     <card
                       :show="show"
                       :short-description="true"
@@ -25,7 +25,7 @@
                       :details-link-enabled="true"
                       :favorited-link-enabled="!favoritesOnly"
                     />
-                  </div>
+
                 </div>
               </template>
             </div>
@@ -65,9 +65,6 @@ export default {
     favoritesOnly() {
       this.searchTerm = "";
     }
-  },
-  mounted() {
-    this.$store.dispatch("shows/list/fetchTopRated");
   },
   computed: {
     isLoading() {

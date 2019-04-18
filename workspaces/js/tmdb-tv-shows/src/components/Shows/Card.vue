@@ -1,11 +1,12 @@
 <template>
-  <div class="card">
-    <div class="columns is-mobile is-gapless is-multiline">
-      <div class="column" :class="posterSizes">
-        <poster :path="show.poster_path" />
-      </div>
-      <div class="column">
-        <div class="column-fill-card-content">
+  <div class="card" style="height: 100%;">
+
+
+      <div class="is-flex-tablet" style="height: 100%;">
+        <div class="ratio-16-9" style="flex: 0 0 auto;">
+          <!--<poster :path="show.poster_path" />-->
+        </div>
+        <div style="display: flex; flex-direction: column; flex: 1 1 auto;height: 100%;">
           <div class="card-title">
             <p class="title is-6">
               {{ show.name }}
@@ -19,7 +20,7 @@
               {{ show.overview }}
             </description>
           </div>
-          <div class="card-footer">
+          <div class="card-footer" style="margin-top: auto;">
             <a class="card-footer-item" @click="toggleIsFavorites()">
               <span class="icon" :class="{ 'is-favorite': isFavorites }">
                 <i class="fa fa-star"></i>
@@ -27,7 +28,7 @@
             </a>
             <router-link
               class="card-footer-item"
-              v-if="detailsLinkEnabled" 
+              v-if="detailsLinkEnabled"
               :to="{ name: 'show', params: { id: show.id } }"
             >
               <span class="icon">
@@ -36,8 +37,15 @@
             </router-link>
           </div>
         </div>
+
       </div>
-    </div>
+
+
+
+
+
+
+
 
   </div>
 </template>

@@ -1,0 +1,13 @@
+$primary: #611a64 !default;
+$cta: #b80e7d !default;
+
+$theme-colors: (
+  primary: $primary,
+  cta: $cta
+) !default;
+
+$link-color: $cta !default;
+
+$body-bg: #f5f5f9 !default;
+
+$component-active-bg: $cta !default;

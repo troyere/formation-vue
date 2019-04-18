@@ -1,20 +1,20 @@
 <template>
   <div id="app">
-    <div class="container">
-      <nav-bar />
-    </div>
-    <keep-alive>
+    <layout>
       <router-view></router-view>
-    </keep-alive>
+    </layout>
   </div>
 </template>
 
 <script>
-import NavBar from "./components/Layout/NavBar";
+import Layout from "./components/Layout/Layout";
 
 export default {
   components: {
-    NavBar
+    Layout
+  },
+  mounted() {
+    this.$store.dispatch("shows/list/fetchTopRated");
   }
 };
 </script>

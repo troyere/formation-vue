@@ -1,0 +1,45 @@
+.navbar-item.is-active {
+  color: #00D1B2 !important;
+}
+
+.no-image-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dbdbdb;
+  color: #b5b5b5;
+  padding: 3rem 0;
+}
+
+.is-favorite {
+  color: #FFDD57;
+}
+
+.description {
+  font-size: 0.85rem;
+}
+
+.card-title {
+  padding: 1.5rem;
+  padding-bottom: 0;
+
+  & + .card-content {
+    padding: 1.5rem;
+    padding-top: 1rem;
+  }
+}
+
+.ratio-16-9 {
+  width: 200px;
+  position: relative;
+  background-color: #eee;
+  background-image: url(https://placeimg.com/1000/1000/nature);
+  background-size: cover;
+}
+
+.ratio-16-9:before {
+  content: '';
+  display: block;
+  height: 0;
+  padding-top: 56.25%;
+}
