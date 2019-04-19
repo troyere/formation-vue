@@ -35,3 +35,14 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.no-image-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dbdbdb;
+  color: #b5b5b5;
+  padding: 3rem 0;
+}
+</style>

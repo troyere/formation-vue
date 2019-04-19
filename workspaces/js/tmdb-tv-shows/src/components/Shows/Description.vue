@@ -39,3 +39,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.description {
+  font-size: 0.85rem;
+}
+</style>

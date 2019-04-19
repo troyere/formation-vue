@@ -32,3 +32,9 @@ export default {
   name: "navBar"
 };
 </script>
+
+<style scoped>
+.is-active {
+  color: #00d1b2 !important;
+}
+</style>

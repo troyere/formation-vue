@@ -2,7 +2,7 @@
   <div class="card" style="height: 100%;">
     <div class="is-flex-tablet" style="height: 100%;">
       <div class="ratio-16-9" style="flex: 0 0 auto;">
-        <!--<poster :path="show.poster_path" />-->
+        <poster :path="show.poster_path" />
       </div>
       <div style="display: flex; flex-direction: column; flex: 1 1 auto;height: 100%;">
         <div class="card-title">
@@ -91,3 +91,36 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.is-favorite {
+  color: #ffdd57;
+}
+
+.card-title {
+  padding: 1.5rem;
+  padding-bottom: 0;
+}
+
+.card-title + .card-content {
+  padding: 1.5rem;
+  padding-top: 1rem;
+}
+
+.ratio-16-9 {
+  width: 185px;
+  position: relative;
+  /*background-color: #eee;*/
+  /*background-image: url(https://placeimg.com/1000/1000/nature);*/
+  /*background-size: cover;*/
+  padding-top: 100.5027%;
+  background: grey;
+}
+
+/*.ratio-16-9:before {*/
+/*  content: "";*/
+/*  display: block;*/
+/*  height: 0;*/
+/*  padding-top: 100.5027%;*/
+/*}*/
+</style>
