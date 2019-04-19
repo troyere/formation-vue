@@ -1,52 +1,41 @@
 <template>
   <div class="card" style="height: 100%;">
-
-
-      <div class="is-flex-tablet" style="height: 100%;">
-        <div class="ratio-16-9" style="flex: 0 0 auto;">
-          <!--<poster :path="show.poster_path" />-->
-        </div>
-        <div style="display: flex; flex-direction: column; flex: 1 1 auto;height: 100%;">
-          <div class="card-title">
-            <p class="title is-6">
-              {{ show.name }}
-            </p>
-            <p class="subtitle is-6">
-              {{ show.first_air_date | niceDate }}
-            </p>
-          </div>
-          <div class="card-content">
-            <description :short="true">
-              {{ show.overview }}
-            </description>
-          </div>
-          <div class="card-footer" style="margin-top: auto;">
-            <a class="card-footer-item" @click="toggleIsFavorites()">
-              <span class="icon" :class="{ 'is-favorite': isFavorites }">
-                <i class="fa fa-star"></i>
-              </span>
-            </a>
-            <router-link
-              class="card-footer-item"
-              v-if="detailsLinkEnabled"
-              :to="{ name: 'show', params: { id: show.id } }"
-            >
-              <span class="icon">
-                <i class="fa fa-arrow-right"></i>
-              </span>
-            </router-link>
-          </div>
-        </div>
-
+    <div class="is-flex-tablet" style="height: 100%;">
+      <div class="ratio-16-9" style="flex: 0 0 auto;">
+        <!--<poster :path="show.poster_path" />-->
       </div>
-
-
-
-
-
-
-
-
+      <div style="display: flex; flex-direction: column; flex: 1 1 auto;height: 100%;">
+        <div class="card-title">
+          <p class="title is-6">
+            {{ show.name }}
+          </p>
+          <p class="subtitle is-6">
+            {{ show.first_air_date | niceDate }}
+          </p>
+        </div>
+        <div class="card-content">
+          <description :short="true">
+            {{ show.overview }}
+          </description>
+        </div>
+        <div class="card-footer" style="margin-top: auto;">
+          <a class="card-footer-item" @click="toggleIsFavorites()">
+            <span class="icon" :class="{ 'is-favorite': isFavorites }">
+              <i class="fa fa-star"></i>
+            </span>
+          </a>
+          <router-link
+            class="card-footer-item"
+            v-if="detailsLinkEnabled"
+            :to="{ name: 'show', params: { id: show.id } }"
+          >
+            <span class="icon">
+              <i class="fa fa-arrow-right"></i>
+            </span>
+          </router-link>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

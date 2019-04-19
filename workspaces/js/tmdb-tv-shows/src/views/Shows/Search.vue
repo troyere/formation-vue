@@ -17,15 +17,13 @@
             <div class="columns is-mobile is-multiline">
               <template v-for="show in shows">
                 <div class="column" :class="columnSizes" :key="show.id">
-
-                    <card
-                      :show="show"
-                      :short-description="true"
-                      :single-line="!!searchTerm"
-                      :details-link-enabled="true"
-                      :favorited-link-enabled="!favoritesOnly"
-                    />
-
+                  <card
+                    :show="show"
+                    :short-description="true"
+                    :single-line="!!searchTerm"
+                    :details-link-enabled="true"
+                    :favorited-link-enabled="!favoritesOnly"
+                  />
                 </div>
               </template>
             </div>
